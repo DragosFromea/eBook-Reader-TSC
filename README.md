@@ -1,3 +1,5 @@
+![diagrama](./Images/diagrama.svg)
+
 | Component               | Supplier Link                                                                 | Datasheet                                                                 |
 |-------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------|
 | 112A-TAAR-R03 ATTEND    | [Mouser](https://www.mouser.co.uk/ProductDetail/ATTEND/112A-TAAR-R03)         | [Datasheet](https://www.snapeda.com/parts/112A-TAAR-R03/Attend/datasheet/)|
@@ -20,67 +22,72 @@
 
 
 Core Components
-Microcontroller (ESP32-C6-WROOM-1-N8)
+Microcontroller (ESP32-C6-WROOM-1-N8):
 
-Architecture: 32-bit RISC-V
+    Architecture: 32-bit RISC-V
 
-Clock Speed: 160 MHz
+    Clock Speed: 160 MHz
 
-Wireless: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
+    Wireless: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
 
-Functions: System control, sensor/module communication, power management.
+    Functions: System control, sensor/module communication, power management.
+
 
 Power Management
-Battery System
+Battery System:
 
-Type: Li-Po (Lithium Polymer)
+    Type: Li-Po (Lithium Polymer)
 
-Capacity: 3.7V, 1800mAh
+    Capacity: 3.7V, 1800mAh
 
-Charging Circuit: MCP73831T (5V input via USB-C)
+    Charging Circuit: MCP73831T (5V input via USB-C)
 
-Protection: Overcharge and deep discharge safeguards.
+    Protection: Overcharge and deep discharge safeguards.
 
-Voltage Regulation: LDO regulator (stable 3.3V output).
+    Voltage Regulation: LDO regulator (stable 3.3V output).
+
 
 Storage & Display
-E-Paper Display
+E-Paper Display:
 
-Size: 7.5 inches | Resolution: 800×480 pixels
+    Size: 7.5 inches | Resolution: 800×480 pixels
 
-Interface: SPI
+    Interface: SPI
 
-MicroSD Card Module
+MicroSD Card Module:
 
-Format: FAT32 | Interface: SPI
+    Format: FAT32 | Interface: SPI
 
-External NOR Flash
+External NOR Flash:
 
-Capacity: 64MB | Interface: SPI
+    Capacity: 64MB | Interface: SPI
+
 
 Sensors & Timing
-Environmental Sensor (BME688)
+Environmental Sensor (BME688):
 
-Metrics: Temperature, humidity, air pressure, gas levels.
+    Metrics: Temperature, humidity, air pressure, gas levels.
 
-Interface: I2C
+    Interface: I2C
 
-Real-Time Clock (DS3231SN)
+Real-Time Clock (DS3231SN):
 
-Function: Maintains time/date during power loss.
+    Function: Maintains time/date during power loss.
 
-Interface: I2C
+    Interface: I2C
+
 
 User Interface
-USB-C Connector
+USB-C Connector:
 
-Role: Power input, data transfer.
+    Role: Power input, data transfer.
 
-Safety: ESD protection + Schottky diode (reverse polarity).
+    Safety: ESD protection + Schottky diode (reverse polarity).
 
-Tactile Push Buttons
+Tactile Push Buttons:
 
-Control: GPIO-based input.
+    Control: GPIO-based input.
+
 
 Communication Interfaces
 SPI: SD card, external flash, e-paper display.
