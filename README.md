@@ -119,3 +119,5 @@ Wireless: Wi-Fi 6/Bluetooth 5.0 (via ESP32-C6).
 | USB-C Connection               | GPIOs (via voltage regulation)                 | USB       | Powers and programs the ESP32-C6.                                       |  
 | Control Buttons                | IO9 (BOOT), IO15 (CHANGE), EN (RESET)          | GPIO      | User input for device interactions (boot, mode change, reset).          |  
 
+
+DIAGRAM: is located in /Images
