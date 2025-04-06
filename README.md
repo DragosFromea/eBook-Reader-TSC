@@ -17,3 +17,104 @@
 | Resistor 0402            | [Mouser Catalog](https://www.mouser.com/c/passive-components/resistors/chip-resistor-surface-mount/?q=RC0402) | [Datasheet (Example)](https://www.yageo.com/upload/media/product/products/datasheet/rchip/PYu-RC_Group_51_RoHS_L_12.pdf) |
 | Solder Jumper (SJ)       | [GrabCAD Model](https://grabcad.com/library/solder-jumpers-1)                 | –                                                                         |
 | QWIIC Connector          | [SparkFun](https://www.sparkfun.com/products/14417)                           | [Guide](https://learn.sparkfun.com/tutorials/qwiic-shield-for-arduino--photon-hookup-guide) |
+
+
+Core Components
+Microcontroller (ESP32-C6-WROOM-1-N8)
+
+Architecture: 32-bit RISC-V
+
+Clock Speed: 160 MHz
+
+Wireless: Wi-Fi 6 (2.4 GHz), Bluetooth 5.0
+
+Functions: System control, sensor/module communication, power management.
+
+Power Management
+Battery System
+
+Type: Li-Po (Lithium Polymer)
+
+Capacity: 3.7V, 1800mAh
+
+Charging Circuit: MCP73831T (5V input via USB-C)
+
+Protection: Overcharge and deep discharge safeguards.
+
+Voltage Regulation: LDO regulator (stable 3.3V output).
+
+Storage & Display
+E-Paper Display
+
+Size: 7.5 inches | Resolution: 800×480 pixels
+
+Interface: SPI
+
+MicroSD Card Module
+
+Format: FAT32 | Interface: SPI
+
+External NOR Flash
+
+Capacity: 64MB | Interface: SPI
+
+Sensors & Timing
+Environmental Sensor (BME688)
+
+Metrics: Temperature, humidity, air pressure, gas levels.
+
+Interface: I2C
+
+Real-Time Clock (DS3231SN)
+
+Function: Maintains time/date during power loss.
+
+Interface: I2C
+
+User Interface
+USB-C Connector
+
+Role: Power input, data transfer.
+
+Safety: ESD protection + Schottky diode (reverse polarity).
+
+Tactile Push Buttons
+
+Control: GPIO-based input.
+
+Communication Interfaces
+SPI: SD card, external flash, e-paper display.
+
+I2C: BME688 sensor, DS3231SN RTC.
+
+GPIO: Button controls, general I/O.
+
+UART: Debugging, serial communication.
+
+Wireless: Wi-Fi 6/Bluetooth 5.0 (via ESP32-C6).
+
+### Power Consumption Estimation  
+| Component                      | Current Draw (mA) | Voltage (V) | Power (mW) |  
+|--------------------------------|-------------------|-------------|------------|  
+| ESP32-C6 (Wi-Fi active)        | 200               | 3.3         | 660        |  
+| E-Paper Display (Updating)     | 40                | 3.3         | 132        |  
+| BME688 Sensor (Measuring)      | 3.1               | 3.3         | 10.23      |  
+| RTC Module (Active)            | 0.15              | 3.3         | 0.495      |  
+| SD Card (Active)               | 50                | 3.3         | 165        |  
+| External NOR Flash             | 25                | 3.3         | 82.5       |  
+| **Total Estimated Power Consumption** | **~318.5 mA**     | **3.3**     | **1050.72**|  
+
+---
+
+### ESP32-C6 Pin Mapping  
+| Component                      | ESP32-C6 Pin(s)                                | Interface | Purpose                                                                 |  
+|--------------------------------|------------------------------------------------|-----------|-------------------------------------------------------------------------|  
+| E-Paper Display                | IO7 (MOSI), IO6 (SCK), IO10 (CS), IO5 (DC), IO23 (RST), IO3 (BUSY) | SPI       | Transfers image data to the display and controls its state.             |  
+| MicroSD Card                   | IO7 (MOSI), IO6 (SCK), IO4 (SS_SD), IO2 (MISO) | SPI       | Storage and retrieval of e-book files.                                  |  
+| Environmental Sensor (BME688)  | IO21 (SDA), IO22 (SCL)                         | I2C       | Reads temperature, humidity, pressure, and air quality data.            |  
+| RTC Module (DS3231)            | IO21 (SDA), IO22 (SCL), IO18 (RST), IO1 (32KHz), IO0 (INT_RTC) | I2C       | Maintains time/date tracking during system power-off.                   |  
+| External NOR Flash             | IO11 (CS), IO6 (SCK), IO2 (MISO), IO7 (MOSI)   | SPI       | Additional storage for application data.                                |  
+| Battery Monitoring             | IO21 (SDA), IO22 (SCL)                         | I2C       | Monitors battery voltage and charge status.                             |  
+| USB-C Connection               | GPIOs (via voltage regulation)                 | USB       | Powers and programs the ESP32-C6.                                       |  
+| Control Buttons                | IO9 (BOOT), IO15 (CHANGE), EN (RESET)          | GPIO      | User input for device interactions (boot, mode change, reset).          |  
+
